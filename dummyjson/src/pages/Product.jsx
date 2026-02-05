@@ -17,9 +17,8 @@ const Product = () => {
       .then((res) => res.json())
 
       .then((data) => {
-        setProducts(data.products);
-        setTotalpages(Math.ceil(data.total / limitData))
-        
+        -setProducts(data.products);
+        setTotalpages(Math.ceil(data.total / limitData));
       })
 
       .catch((error) => console.error(error));
