@@ -9,17 +9,11 @@ const Carts = () => {
   const [error, setError] = useState(null);
 
   const deleteProductFromCart = (cartId, productId) => {
-    // 1. Walk through every cart in the main list
     const updatedCarts = cartsdata.map((cart) => {
-      // 2. Is this the cart we want to fix? (The "Target")
       if (cart.id === cartId) {
-        // 3. YES! Perform Surgery.
-        // Create a NEW object for this cart (Copy it)
         return {
-          ...cart, // Copy title, total, userId, etc.
+          ...cart, // spread operator
 
-          // 4. Overwrite ONLY the 'products' list
-          // Filter out the bad product
           products: cart.products.filter((p) => p.id !== productId),
         };
       }
@@ -28,7 +22,7 @@ const Carts = () => {
       return cart;
     });
 
-    // 6. Update the state with the new street
+    // 6. Update the state with the new state
     setCartsdata(updatedCarts);
   };
 
